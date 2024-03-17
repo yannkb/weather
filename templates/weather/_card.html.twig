@@ -4,15 +4,16 @@
 			<h4 class="card-title">{{ weather.location}},
 				{{ weather.country }}</h4>
 			<h1 class="card-text">{{ weather.temperature }}</h1>
-			<p class="text-end">
-				<img src="{{ asset('images/'{{ weather.icon }}'.png') }}">
+			<p class="card-text">
+                {{ weather.weatherText }}
+				<img src="{{ asset('images/' ~ weather.icon ~ '.png') }}">
 			</p>
-			<p class="card-text">{{ weather.weatherText }}</p>
-			<p class="card-text">{{ weather.localObservationDateTime|date("d/m/Y H:i A") }}
+			<p class="card-text mb-3">
+				{{ weather.localObservationDateTime|date("d/m/Y H:i A") }}
 				{% if isNight %}
-					<img src="{{ asset('images/night.png') }}" height="100" width="100">
+					<img src="{{ asset('images/night.png') }}" height="25" width="25">
 				{% else %}
-					<img src="{{ asset('images/day.webp') }}" height="100" width="100">
+					<img src="{{ asset('images/day.webp') }}" height="25" width="25">
 				{% endif %}
 			</p>
 		</div>

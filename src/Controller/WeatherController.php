@@ -56,7 +56,7 @@ class WeatherController extends AbstractController
         }
 
         $isNight = false;
-        $time = date('H', $currentCondition->toArray()[0]['LocalObservationDateTime']);
+        $time = date('H', strtotime($currentCondition->toArray()[0]['LocalObservationDateTime']));
         if ($time < 8 && $time > 20) {
             $isNight = true;
         }
@@ -67,7 +67,7 @@ class WeatherController extends AbstractController
             'localObservationDateTime' => $currentCondition->toArray()[0]['LocalObservationDateTime'],
             'weatherText' => $currentCondition->toArray()[0]['WeatherText'],
             'temperature' => $currentCondition->toArray()[0]['Temperature']['Metric']['Value'] . '°' . $currentCondition->toArray()[0]['Temperature']['Metric']['Unit'],
-            'icon' => $currentCondition->toArray()[0]['Temperature']['WeatherIcon'],
+            'icon' => $currentCondition->toArray()[0]['WeatherIcon'],
         ];
 
         return $this->render('weather/_card.html.twig', [
