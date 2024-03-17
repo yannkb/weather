@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<form>
+		<div class="input-group mb-3">
+			<input type="text" name="city" id="city" class="form-control" placeholder="Search for a city">
+			<button type="submit" class="btn btn-primary" hx-post="{{ path('app_weather_search') }}" hx-target="#search-results">Search</button>
+		</div>
+	</form>
+	<div class="position-absolute top-50 start-50 translate-middle" id="search-results"></div>
+{% endblock %}
