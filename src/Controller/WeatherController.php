@@ -67,12 +67,12 @@ class WeatherController extends AbstractController
             'localObservationDateTime' => $currentCondition->toArray()[0]['LocalObservationDateTime'],
             'weatherText' => $currentCondition->toArray()[0]['WeatherText'],
             'temperature' => $currentCondition->toArray()[0]['Temperature']['Metric']['Value'] . '°' . $currentCondition->toArray()[0]['Temperature']['Metric']['Unit'],
-            'isNight' => $isNight,
-            // 'icon' => ,
+            'icon' => $currentCondition->toArray()[0]['Temperature']['WeatherIcon'],
         ];
 
         return $this->render('weather/_card.html.twig', [
-            'weather' => $weather
+            'weather' => $weather,
+            'isNight' => $isNight,
         ]);
     }
 }
